@@ -1,0 +1,30 @@
+#message {
+    color: gray;
+    font-family: "Monaco", "Lucida Console", "Courier New", monospace;
+}
+.displayContainer {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+.centerFlex {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+.unselectable {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently supported by most modern browsers */
+}
+body {
+    background-color: black;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+html {
+    height: 100%;
+    width: 100%;
+}
