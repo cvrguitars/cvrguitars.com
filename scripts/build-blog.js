@@ -41,7 +41,10 @@ async function generateBlogIndex(posts) {
 async function convertMarkdownFile(filePath) {
     const content = await fs.readFile(filePath, 'utf8');
     const { attributes, body } = frontMatter(content);
-    const html = marked(body);
+    
+    // Remove the first heading (title) from the markdown content
+    const bodyWithoutTitle = body.replace(/^\s*#\s+[^\n]+\n/, '');
+    const html = marked(bodyWithoutTitle);
     const template = await fs.readFile(TEMPLATE_PATH, 'utf8');
 
     const date = new Date(attributes.date).toLocaleDateString('en-US', {
@@ -50,11 +53,12 @@ async function convertMarkdownFile(filePath) {
         day: 'numeric'
     });
 
-    const postHTML = template
-        .replace('{{TITLE}}', attributes.title)
-        .replace('{{DATE}}', date)
-        .replace('{{AUTHOR}}', attributes.author)
-        .replace('{{CONTENT}}', html);
+    // Use replaceAll instead of replace to catch all instances
+    let postHTML = template;
+    postHTML = postHTML.replaceAll('{{TITLE}}', attributes.title);
+    postHTML = postHTML.replaceAll('{{DATE}}', date);
+    postHTML = postHTML.replaceAll('{{AUTHOR}}', attributes.author);
+    postHTML = postHTML.replaceAll('{{CONTENT}}', html);
 
     const slug = path.basename(filePath, '.md');
     await fs.outputFile(path.join(OUTPUT_DIR, `${slug}.html`), postHTML);
