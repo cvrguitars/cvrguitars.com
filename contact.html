@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CVR Guitars | Custom Handmade Guitars</title>
+    <title>Contact Us | CVR Guitars</title>
     <link rel="icon" type="image/svg+xml" href="assets/cvrguitars-logo.svg">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
@@ -22,34 +22,44 @@
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Handcrafted Excellence</h1>
-            <p>Custom guitars built with passion and precision</p>
-        </section>
-
-        <section class="featured">
-            <h2>Latest Creations</h2>
-            <div class="featured-grid">
-                <article class="featured-item">
-                    <img src="assets/placeholder-guitar-1.jpg" alt="Featured Guitar 1">
-                    <h3>Custom Electric</h3>
-                    <p>Masterfully crafted electric guitar with premium tonewoods</p>
-                </article>
-                <article class="featured-item">
-                    <img src="assets/placeholder-guitar-2.jpg" alt="Featured Guitar 2">
-                    <h3>Acoustic Model</h3>
-                    <p>Hand-selected woods for superior resonance and tone</p>
-                </article>
+        <section class="contact-section">
+            <div class="contact-form">
+                <h2>Get in Touch</h2>
+                <p>Interested in commissioning a custom guitar? Have questions about our process? We'd love to hear from you.</p>
+                
+                <form id="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
             </div>
         </section>
     </main>

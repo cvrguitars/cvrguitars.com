@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CVR Guitars | Custom Handmade Guitars</title>
+    <title>Blog | CVR Guitars</title>
     <link rel="icon" type="image/svg+xml" href="assets/cvrguitars-logo.svg">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/blog.css">
 </head>
 <body>
     <header>
@@ -22,35 +23,19 @@
                 <span></span>
             </button>
             <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="blog.html">Blog</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
-            <h1>Handcrafted Excellence</h1>
-            <p>Custom guitars built with passion and precision</p>
-        </section>
-
-        <section class="featured">
-            <h2>Latest Creations</h2>
-            <div class="featured-grid">
-                <article class="featured-item">
-                    <img src="assets/placeholder-guitar-1.jpg" alt="Featured Guitar 1">
-                    <h3>Custom Electric</h3>
-                    <p>Masterfully crafted electric guitar with premium tonewoods</p>
-                </article>
-                <article class="featured-item">
-                    <img src="assets/placeholder-guitar-2.jpg" alt="Featured Guitar 2">
-                    <h3>Acoustic Model</h3>
-                    <p>Hand-selected woods for superior resonance and tone</p>
-                </article>
-            </div>
+        <section class="blog-list">
+            <h1>Latest Posts</h1>
+            {{BLOG_POSTS}}
         </section>
     </main>
 
