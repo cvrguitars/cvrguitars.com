@@ -7,6 +7,16 @@ const POSTS_DIR = path.join(__dirname, '../blog/posts');
 const OUTPUT_DIR = path.join(__dirname, '../blog/generated');
 const TEMPLATE_PATH = path.join(__dirname, 'blog-template.html');
 
+function escapeHtml(str) {
+    if (str == null) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
 async function generateBlogIndex(posts) {
     const template = await fs.readFile(path.join(__dirname, 'blog-index-template.html'), 'utf8');
     let postsHTML = '';
@@ -53,12 +63,12 @@ async function convertMarkdownFile(filePath) {
         day: 'numeric'
     });
 
-    // Use replaceAll instead of replace to catch all instances
-    let postHTML = template;
-    postHTML = postHTML.replaceAll('{{TITLE}}', attributes.title);
-    postHTML = postHTML.replaceAll('{{DATE}}', date);
-    postHTML = postHTML.replaceAll('{{AUTHOR}}', attributes.author);
-    postHTML = postHTML.replaceAll('{{CONTENT}}', html);
+    const postHTML = template
+        // Replace ALL occurrences of placeholders where needed
+        .replace(/\{\{TITLE\}\}/g, escapeHtml(attributes.title))
+        .replace(/\{\{DATE\}\}/g, escapeHtml(date))
+        .replace(/\{\{AUTHOR\}\}/g, escapeHtml(attributes.author))
+        .replace(/\{\{CONTENT\}\}/g, html);
 
     const slug = path.basename(filePath, '.md');
     await fs.outputFile(path.join(OUTPUT_DIR, `${slug}.html`), postHTML);
